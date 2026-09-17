@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: elisp -*-
 (use-package which-key
+  :straight t
   :hook (after-init . which-key-mode)
   :config
   (setq which-key-separator " "
@@ -13,6 +14,7 @@
   ;; We want this to load after evil, but evil also needs to be loaded eagerly,
   ;; otherwise these macros won't exist when subsequent scripts are loaded, and
   ;; using definers outside of this file won't work.
+  :straight t
   :after evil
   :config
   (require 'core-functions)
@@ -115,6 +117,7 @@
   )
 
 (use-package evil
+  :straight t
   ;; Load evil eagerly so that general is loaded eagerly.
   :demand t
   :hook (after-init . evil-mode)
@@ -124,12 +127,14 @@
   (setq evil-undo-system 'undo-redo))  ; Use the standard Emacs 29+ undo
 
 (use-package evil-collection
-  :ensure nil
+  :straight t
   :after evil
   :config
   (evil-collection-init))
 
 (use-package evil-surround
+  :straight t
+  :after evil
   :hook ((text-mode prog-mode conf-mode) . evil-surround-mode))
 
 ;; (use-package dired

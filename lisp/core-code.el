@@ -2,7 +2,7 @@
 ;; Settings for code-related functionality.
 
 (use-package treesit-auto
-  :ensure nil
+  :straight t
   :custom
   (treesit-auto-install 'prompt)
   :config
@@ -47,17 +47,12 @@
   "cr" '("references"      . xref-find-references)
   "ct" '("type definition" . eglot-find-typeDefinition))
 
-(use-package eglot-booster
-  :ensure nil
-  :after eglot
-  :config (eglot-booster-mode 1))
-
 (use-package consult-eglot
-  :ensure nil
+  :straight t
   :after (consult eglot))
 
 (use-package consult-eglot-embark
-  :ensure nil
+  :straight t
   :after (consult-eglot embark)
   :config (consult-eglot-embark-mode 1))
 
@@ -67,6 +62,7 @@
 ;; some languages, but in other cases we might want or need to use an
 ;; external formatting program, which apheleia enables for us.
 (use-package apheleia
+  :straight t
   :general
   (general-define-key
    "s-;" 'apheleia-format-buffer)

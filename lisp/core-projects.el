@@ -1,6 +1,5 @@
 ;; -*- lexical-binding: elisp -*-
 (use-package project
-  :ensure nil
   :config
   (project-remember-projects-under "~/dev")
   (setq project-kill-buffers-display-buffer-list 't)
