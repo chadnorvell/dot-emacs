@@ -67,4 +67,4 @@
 (use-package nix-mode
   :straight t)
 
-(provide 'code)
+(provide 'cxn/code)

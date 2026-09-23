@@ -30,7 +30,7 @@
   :straight t
   :after evil
   :config
-  (require 'functions)
+  (require 'cxn/funcs)
 
   (general-define-key
    "C-'"        'embark-act
@@ -167,7 +167,9 @@
     "nx"   '("word 2" . avy-goto-char-2)
     "ny"   '("word 0" . avy-goto-word-0)
 
-    "o"   '("toggle" . hydra-toggle/body)
+    "o"   (cons "org" (make-sparse-keymap))
+    "oa"    '("agenda"  . org-agenda)
+    "oc"    '("capture" . org-capture)
 
     "p"   (cons "project" (make-sparse-keymap))
     "pd"    '("dired"     . project-dired)
@@ -218,6 +220,8 @@
     "wsj"     '("↓"        . split-window-below-and-focus)
     "wsk"     '("↑"        . split-window-below)
     "wsl"     '("→"        . split-window-right-and-focus)
+
+    "-"   '("toggle" . hydra-toggle/body)
     )
   )
 
@@ -330,7 +334,8 @@ theme: ligh_t_ / _d_ark
       ("f" display-fill-column-indicator-mode "fill column"      :toggle t)
       ("w" whitespace-mode                    "whitespace"       :toggle t)
       ("v" visual-line-mode                   "visual line mode" :toggle t)
-      ("r" toggle-truncate-lines              "truncate lines")))))
+      ("r" toggle-truncate-lines              "truncate lines")
+      ("o" org-indent-mode                    "org indent mode"  :toggle t)))))
 
 (use-package hydra-posframe
   :straight (hydra-posframe :type git :host github :repo "Ladicle/hydra-posframe")
@@ -340,4 +345,4 @@ theme: ligh_t_ / _d_ark
 				    (right-fringe . 5)))
   :hook (after-init . hydra-posframe-mode))
 
-(provide 'keybindings)
+(provide 'cxn/keys)

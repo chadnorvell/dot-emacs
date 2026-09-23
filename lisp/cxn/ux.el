@@ -1,10 +1,28 @@
 ;; -*- lexical-binding: t -*-
-(setq fixed-family "Iosevka")
-(set-face-font 'default (concat fixed-family "-13"))
+
+(set-face-attribute 'default nil
+		    :family "Iosevka"
+		    :height 135
+		    :weight 'medium)
+
 (copy-face 'default 'fixed-pitch)
 
-;; (setq variable-family "Linux Biolinum")
-;; (set-face-font 'variable-pitch (concat variable-family  "-16"))
+(set-face-attribute 'fixed-pitch-serif nil
+		    :family "Iosevka Slab"
+		    :height 135
+		    :weight 'medium)
+
+(set-face-attribute 'variable-pitch nil
+		    :family "Iosevka Aile"
+		    :height 135
+		    ;;:width 'semi-condensed
+		    :weight 'regular)
+
+(set-face-attribute 'variable-pitch-text nil
+		    :family "Iosevka Etoile"
+		    :height 135
+		    ;;:width 'semi-condensed
+		    :weight 'regular)
 
 (use-package nerd-icons
   :straight t
@@ -40,4 +58,4 @@
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
-(provide 'ux)
+(provide 'cxn/ux)

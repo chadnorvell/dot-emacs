@@ -174,4 +174,4 @@
   (minibuffer-prompt-properties
    '(read-only t cursor-intangible t face minibuffer-prompt)))
 
-(provide 'tools)
+(provide 'cxn/tools)

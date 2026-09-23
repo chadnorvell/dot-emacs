@@ -97,4 +97,4 @@ respectively."
             (double-quote . "\"")
             (back-quote   . "`")))
 
-(provide 'functions)
+(provide 'cxn/funcs)
