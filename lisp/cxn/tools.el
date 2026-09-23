@@ -155,6 +155,10 @@
   :straight t
   :demand t)
 
+;; better help buffer
+(use-package helpful
+  :straight t)
+
 (use-package savehist
   :init
   (savehist-mode))
