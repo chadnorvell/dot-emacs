@@ -2,26 +2,26 @@
 
 (set-face-attribute 'default nil
 		    :family "Iosevka"
-		    :height 135
+		    :height 130
 		    :weight 'medium)
 
 (copy-face 'default 'fixed-pitch)
 
 (set-face-attribute 'fixed-pitch-serif nil
 		    :family "Iosevka Slab"
-		    :height 135
+		    :height 130
 		    :weight 'medium)
 
 (set-face-attribute 'variable-pitch nil
 		    :family "Iosevka Aile"
-		    :height 135
-		    ;;:width 'semi-condensed
+		    :height 130
+		    :width 'semi-condensed
 		    :weight 'regular)
 
 (set-face-attribute 'variable-pitch-text nil
 		    :family "Iosevka Etoile"
-		    :height 135
-		    ;;:width 'semi-condensed
+		    :height 130
+		    :width 'semi-condensed
 		    :weight 'regular)
 
 (use-package nerd-icons
@@ -40,9 +40,6 @@
                (expand-file-name "themes/" user-emacs-directory))
   (load-theme 'doom-nordic t))
 
-;; (use-package mixed-pitch
-;;   :hook (org-mode . mixed-pitch-mode))
-
 ;; Show eldoc content in a childframe.
 (use-package eldoc-box
   :straight t)
@@ -57,5 +54,14 @@
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package spacious-padding
+  :straight t
+  :config
+  (setq spacious-padding-widths
+	'( :internal-border-width 24
+	   :header-line-width 0
+	   :mode-line-width 0
+	   :tab-width 0)))
 
 (provide 'cxn/ux)

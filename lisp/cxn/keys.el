@@ -335,7 +335,7 @@ theme: ligh_t_ / _d_ark
       ("w" whitespace-mode                    "whitespace"       :toggle t)
       ("v" visual-line-mode                   "visual line mode" :toggle t)
       ("r" toggle-truncate-lines              "truncate lines")
-      ("o" org-indent-mode                    "org indent mode"  :toggle t)))))
+      ("p" spacious-padding-mode              "spacious padding"  :toggle t)))))
 
 (use-package hydra-posframe
   :straight (hydra-posframe :type git :host github :repo "Ladicle/hydra-posframe")
