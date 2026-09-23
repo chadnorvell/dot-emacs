@@ -42,6 +42,10 @@ With prefix, operate on whole buffer."
 	org-insert-heading-respect-content t
 	org-pretty-entities t
 	org-tags-column 0)
+  (setq org-capture-templates
+	'(("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
+	   "*  %?\n"))
+	)
 
   ;; (set-face-attribute 'org-indent nil :inherit '(fixed-pitch))
   ;; (set-face-attribute 'org-default nil :inherit '(variable-pitch-text))
@@ -68,6 +72,7 @@ With prefix, operate on whole buffer."
 
   :hook
   (org-mode . visual-line-mode)
+  (org-mode . org-margin-mode)
   (before-save . cxn/org-before-save-hook)
 
   :general
@@ -88,13 +93,15 @@ With prefix, operate on whole buffer."
 (use-package org-modern
   :straight t
   :config
-  (set-face-attribute 'org-modern-symbol nil :family "Iosevka")
+  (set-face-attribute 'org-modern-symbol nil :inherit '(shadow default))
   (setq org-modern-star 'nil)
   :hook ((org-mode . org-modern-mode)
 	 (org-agenda-finalize . org-modern-agenda)))
 
 (use-package org-margin
-  :straight (org-margin :type git :host github :repo "rougier/org-margin"))
+  :straight (org-margin :type git :host github :repo "rougier/org-margin")
+  :config
+  (setq org-margin-bookmark (propertize "•" 'face '(error bold))))
 
 (use-package evil-org
   :straight t
