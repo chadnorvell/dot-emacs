@@ -67,4 +67,18 @@
 (use-package nix-mode
   :straight t)
 
+(use-package agent-shell
+  :straight t
+  :config
+  (setq agent-shell-hermes-acp-command '("eng" "acp"))
+  ;; Auto-approve ACP permission requests rather than prompting for every
+  ;; tool call, matching the behaviour of the Hermes CLI/TUI.
+  ;;
+  ;; This only waives *agent-shell's* dialog.  Hermes keeps its own guards:
+  ;; its hardline blocklist still refuses things like `rm -rf /' outright,
+  ;; and `approvals.mode' in ~/.hermes/config.yaml still governs its
+  ;; dangerous-command prompts independently of this setting.
+  (setq agent-shell-permission-responder-function
+        #'agent-shell-permission-allow-always))
+
 (provide 'cxn/code)

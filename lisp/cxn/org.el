@@ -1,22 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(defun cxn/org-headers-ensure-blank-lines (&optional prefix)
-  "Ensure that blank lines exist before headings.
-With prefix, operate on whole buffer."
-  (interactive "P")
-  (org-map-entries (lambda ()
-                     (org-with-wide-buffer
-                      ;; `org-map-entries' narrows the buffer, which prevents us from seeing
-                      ;; newlines before the current heading, so we do this part widened.
-                      (while (not (looking-back "\n\n" nil))
-                        ;; Insert blank lines before heading.
-                        (insert "\n"))))
-                   t (if prefix
-                         nil
-                       'tree)))
-
-(defun cxn/org-before-save-hook ()
-  (when (eq major-mode 'org-mode) (cxn/org-headers-ensure-blank-lines)))
+(require 'cxn/org/formatting)
 
 (progn
   (defmacro +org-emphasize (fname char)
