@@ -1,19 +1,21 @@
 ;; -*- lexical-binding: t -*-
 
-(use-package project
+(require 'transient)
+
+(transient-define-prefix cxn/switch-project ()
+  "Transient for switching projects."
+  ["Actions"
+   ("d" "dirs" projectile-find-dir)
+   ("f" "files" projectile-find-file)
+   ("g" "git" magit-project-status)
+   ("m" "dired" projectile-dired)
+   ])
+
+;; project management
+(use-package projectile
   :straight t
   :config
-  (project-remember-projects-under "~/dev")
-  (setq project-kill-buffers-display-buffer-list 't)
-
-  (setq project-vc-extra-root-markers 
-        '("go.mod" "package.json" "flake.nix" "cargo.toml" "mix.exs"))
-
-  (setq project-switch-commands
-        '((project-find-file "files" "f")
-          (project-find-regexp "regexp" "s")
-          (project-dired "dired" "d")
-          (magit-project-status "git" "g"))))
+  (setq projectile-switch-project-action #'cxn/switch-project))
 
 ;; completion
 (use-package consult
